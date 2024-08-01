@@ -8,7 +8,7 @@ import {
 } from "./actions";
 
 export const pokemonApis = {
-  getAllPokemon: async (payload, dispatch) => {
+  getAllPokemons: async (payload, dispatch) => {
     const api = pokemonApis;
     const failtxt = "Failed to get pokemon data";
     let url = pokeBaseUrl + "pokemon";

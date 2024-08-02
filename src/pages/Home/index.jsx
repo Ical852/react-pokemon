@@ -54,7 +54,7 @@ const HomePage = (props) => {
   return (
     <div className="m-5">
       {_renderLoading}
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+      <div class="grid grid-cols-2 sm:grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
         {_renderPokemons}
       </div>
       {_renderLoadMore}

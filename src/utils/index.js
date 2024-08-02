@@ -42,6 +42,12 @@ export const getPokeColors = (type) => {
   if (type === null) return colors.normal;
   return colors[type];
 };
+export const getPokeImg = (detail) => {
+  if (detail?.sprites?.other?.showdown?.front_default !== null) {
+    return detail.sprites.other.showdown.front_default;
+  }
+  return detail.sprites.front_default;
+}
 export const setupEvolutions = (evolutions, results) => {
   const setupEvolves = [];
 

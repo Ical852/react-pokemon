@@ -7,6 +7,31 @@ export const copyData = (data, def) => {
     return def;
   }
 };
+export const getPokeColors = (type) => {
+  const colors = {
+    normal: "#b9bbb7",
+    poison: "#a55c9c",
+    psychic: "#b9bbb7",
+    grass: "#8cd550",
+    ground: "#e8c454",
+    ice: "#95f1fe",
+    fire: "#f95542",
+    rock: "#cfbd73",
+    dragon: "#8a75fd",
+    water: "#55aefe",
+    bug: "#c3d21f",
+    dark: "#8d6855",
+    fighting: "#ad594c",
+    ghost: "#7875d6",
+    steel: "#c3c1da",
+    flying: "#78a5ff",
+    electric: "#fbe33b",
+    fairy: "#fcaeff",
+  };
+
+  if (type === null) return colors.normal;
+  return colors[type];
+};
 export const setupEvolutions = (evolutions, results) => {
   const setupEvolves = [];
 
@@ -34,7 +59,7 @@ export const setupEvolutions = (evolutions, results) => {
 
   if (midFind != null) {
     try {
-      const midFinded = results.find((find) => find?.name == midFind);
+      const midFinded = results.find((find) => find?.name === midFind);
       if (midFinded?.name !== null) {
         setupEvolves.add(midFinded.detail);
       }
@@ -43,7 +68,7 @@ export const setupEvolutions = (evolutions, results) => {
 
   if (maxFind != null) {
     try {
-      const maxFinded = results.find((find) => find?.name == maxFind);
+      const maxFinded = results.find((find) => find?.name === maxFind);
       if (maxFinded?.name !== null) {
         setupEvolves.add(maxFinded.detail);
       }

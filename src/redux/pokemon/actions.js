@@ -22,10 +22,9 @@ export const getAllPokemonsReset = () => {
     type: CONST.GET_ALL_POKEMONS_RESET,
   };
 };
-export const setCount = (payload) => {
+export const setCount = () => {
   return {
     type: CONST.SET_COUNT,
-    payload,
   };
 };
 export const resetCount = () => {

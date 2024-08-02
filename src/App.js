@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { Provider } from "react-redux";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HomePage, PokemonDetail, MyPokemonsPage } from "./pages";
+import Navbar from "./components/organisms/Navbar";
+import store from "./redux/store";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <BrowserRouter basename="/">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/my-pokemons" element={<MyPokemonsPage />} />
+          <Route path="/detail" element={<PokemonDetail />} />
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   );
 }
 

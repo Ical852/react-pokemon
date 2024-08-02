@@ -6,14 +6,8 @@ const pokemonInitialStates = {
   action: "",
 };
 
-export const pokemonReducers = (
-  state = pokemonInitialStates,
-  action
-) => {
-  const {
-    payload,
-    type
-  } = action;
+export const pokemonReducers = (state = pokemonInitialStates, action) => {
+  const { payload, type } = action;
   const actions = {
     // GET_ALL_POKEMONS
     [CONST.GET_ALL_POKEMONS]: () => ({

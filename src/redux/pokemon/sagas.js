@@ -1,15 +1,6 @@
-import {
-  takeLatest,
-  call,
-  put
-} from "redux-saga/effects";
-import {
-  pokemonApis
-} from "./apis";
-import {
-  GET_ALL_POKEMONS,
-  EXTEND_POKEMONS
-} from "./constants";
+import { takeLatest, call, put } from "redux-saga/effects";
+import { pokemonApis } from "./apis";
+import { GET_ALL_POKEMONS, EXTEND_POKEMONS } from "./constants";
 import {
   getAllPokemonsSuccess,
   getAllPokemonsFailed,
@@ -17,30 +8,29 @@ import {
   extendPokemonsFailed,
 } from "./actions";
 
-function* getAllPokemonsSaga() {
+function* getAllPokemonsSaga(payload) {
   try {
-    const response = yield call(
-      pokemonApis.getAllPokemons,
-    );
+    const response = yield call(pokemonApis.getAllPokemons, payload, put);
     yield put(getAllPokemonsSuccess(response));
   } catch (error) {
-    yield put(getAllPokemonsFailed({
-      message: `Error: ${error.message}`
-    }));
+    yield put(
+      getAllPokemonsFailed({
+        message: `Error: ${error.message}`,
+      })
+    );
   }
 }
 
 function* extendPokemonsSaga(payload) {
   try {
-    const response = yield call(
-      pokemonApis.extendPokemons,
-      payload,
-    );
+    const response = yield call(pokemonApis.extendPokemons, payload, put);
     yield put(extendPokemonsSuccess(response));
   } catch (error) {
-    yield put(extendPokemonsFailed({
-      message: `Error: ${error.message}`
-    }));
+    yield put(
+      extendPokemonsFailed({
+        message: `Error: ${error.message}`,
+      })
+    );
   }
 }
 

@@ -1,6 +1,6 @@
 export const pokemonInitialStates = {
   getAllPokemonsLoading: false,
-    getAllPokemonsFailed: false,
+  getAllPokemonsFailed: false,
   count: 0,
   pokemon: {
     count: 0,

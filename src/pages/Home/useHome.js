@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
 import { pokemonApis } from "../../redux/pokemon/apis";
+import { useNavigate } from "react-router-dom";
 
 export const useHome = () => {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [extending, setExtending] = useState(false);
   const [count, setCount] = useState(0);
@@ -37,6 +39,10 @@ export const useHome = () => {
     getPokemonData(setExtending, pokemons?.next, pokemons?.results);
   }, [pokemons]);
 
+  const onClick = useCallback((pokemon) => {
+    return navigate('/detail');
+  }, [navigate]);
+
   useEffect(() => {
     getPokemonData(setLoading);
   }, []);
@@ -46,6 +52,7 @@ export const useHome = () => {
     extending,
     pokemons,
     count,
-    onExtend
+    onExtend,
+    onClick
   };
 };

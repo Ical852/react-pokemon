@@ -23,7 +23,7 @@ const HomePage = (props) => {
 
   const _renderPokemons = useMemo(() => {
     if (!home.loading) return home.pokemons.results?.map((poke) => {
-      return <PokemonCard pokemon={poke} />;
+      return <PokemonCard pokemon={poke} onClick={() => home.onClick(poke)} />;
     });
   }, [home.loading, home.pokemons]);
 

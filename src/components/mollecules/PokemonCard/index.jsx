@@ -4,10 +4,11 @@ import { Badge } from '../../atoms';
 import "./styles.css";
 
 const PokemonCard = (props) => {
-  const { pokemon } = props;
+  const { pokemon, onClick } = props;
   return (
     <div
-      class="p-3 rounded-md"
+      onClick={onClick}
+      class="p-3 rounded-md cursor-pointer"
       style={{
         backgroundColor: getPokeColors(pokemon?.detail?.types?.[0]?.type?.name),
       }}

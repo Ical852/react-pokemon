@@ -1,14 +1,8 @@
 import axios from "axios";
 import { pokeBaseUrl, setupEvolutions } from "../../utils";
-import {
-  setCount,
-  resetCount,
-  setExtendCount,
-  resetExtendCount,
-} from "./actions";
 
 export const pokemonApis = {
-  getAllPokemons: async (payload, dispatch) => {
+  getAllPokemons: async (payload) => {
     try {
       const api = pokemonApis;
       const failtxt = "Failed to get pokemon data";
@@ -50,11 +44,7 @@ export const pokemonApis = {
         if (getSpecies === null) throw failtxt;
         results[i].detail.speciesDetail = getSpecies;
 
-        if (isExtend) {
-          await dispatch(setExtendCount());
-        } else {
-          await dispatch(setCount());
-        }
+        payload.setCount(i+1);
       }
 
       for (let i = 0; i < results.length; i++) {
@@ -62,20 +52,12 @@ export const pokemonApis = {
         const getEvolves = await api.getPokemonEvolutions(evolveUrl);
         if (getEvolves === null) throw failtxt;
         try {
-          const setupResult = isExtend
-            ? [...results, ...payload.pokemon.results]
-            : results;
-          const evolutions = setupEvolutions(getEvolves, setupResult);
+          const setupResults = isExtend ? [...results, ...payload.results] : results;
+          const evolutions = setupEvolutions(getEvolves, setupResults);
           results[i].detail.evolutions = evolutions;
         } catch (e) {}
       }
-
-      if (isExtend) {
-        await dispatch(resetExtendCount());
-      } else {
-        await dispatch(resetCount());
-      }
-
+      
       return pokemons;
     } catch (error) {
       alert(error.message);

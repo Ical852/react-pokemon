@@ -2,11 +2,11 @@ import {
   combineReducers
 } from "redux";
 import {
-  pokemonReducers
-} from "./pokemon/reducers";
+  myPokemonReducers
+} from "./rest/reducers";
 
 const reducers = combineReducers({
-  pokemon: pokemonReducers,
+  myPokemon: myPokemonReducers,
 });
 
 export default reducers;

@@ -1,23 +1,51 @@
-import { useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { pokemonApis } from "../../redux/pokemon/apis";
 
-export const useHome = (props) => {
-  const { getAllPokemonsLoading, getAllPokemons, pokemon, count } = props;
+export const useHome = () => {
+  const [loading, setLoading] = useState(false);
+  const [extending, setExtending] = useState(false);
+  const [count, setCount] = useState(0);
+  const [pokemons, setPokemons] = useState({});
+
+  const getPokemonData = useCallback(
+    async (setLoading, url = null, results = []) =>
+  {
+    setLoading(true);
+    const response =  await pokemonApis.getAllPokemons({
+      url,
+      setCount,
+      results,
+    });
+
+    if (url) {
+      setPokemons({
+        ...response,
+        results: [
+          ...pokemons.results,
+          ...response.results,
+        ]
+      })
+    } else {
+      setPokemons(response);
+    }
+
+    setCount(0);
+    setLoading(false);
+  }, [pokemons]);
+
+  const onExtend = useCallback(() => {
+    getPokemonData(setExtending, pokemons?.next, pokemons?.results);
+  }, [pokemons]);
 
   useEffect(() => {
-    getAllPokemons();
-  }, [getAllPokemons]);
-
-  useEffect(() => {
-    // console.log(pokemon);
-  }, [pokemon]);
-
-  useEffect(() => {
-    console.log(count);
-  }, [count]);
+    getPokemonData(setLoading);
+  }, []);
 
   return {
-    loading: getAllPokemonsLoading,
-    pokemon,
+    loading,
+    extending,
+    pokemons,
     count,
+    onExtend
   };
 };

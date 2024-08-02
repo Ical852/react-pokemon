@@ -1,5 +1,15 @@
 export const pokeBaseUrl = "https://pokeapi.co/api/v2/";
 export const restBaseUrl = "http://localhost:5000/api/";
+export const RESPONSE_STATUS = {
+  SUCCESS: 200,
+  CREATED: 201,
+  NEED_ACTION: 300,
+  UNAUTHORIZED: 401,
+  BAD_REQUEST: 400,
+  FORBIDDEN: 403,
+  ERROR: 500,
+  FAILED: 501,
+};
 export const copyData = (data, def) => {
   try {
     return JSON.parse(JSON.stringify(data));

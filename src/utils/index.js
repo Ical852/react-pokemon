@@ -66,7 +66,7 @@ export const setupEvolutions = (evolutions, results) => {
 
   if (minFind != null) {
     try {
-      const minFinded = results?.find((find) => find?.name === minFind);
+      const minFinded = results?.find((find) => find?.name === minFind || find?.detail?.name === minFind);
       if (minFinded?.name !== null) {
         setupEvolves.push(minFinded.detail);
       }
@@ -75,7 +75,7 @@ export const setupEvolutions = (evolutions, results) => {
 
   if (midFind != null) {
     try {
-      const midFinded = results.find((find) => find?.name === midFind);
+      const midFinded = results.find((find) => find?.name === midFind || find?.detail?.name === midFind);
       if (midFinded?.name !== null) {
         setupEvolves.push(midFinded.detail);
       }
@@ -84,7 +84,7 @@ export const setupEvolutions = (evolutions, results) => {
 
   if (maxFind != null) {
     try {
-      const maxFinded = results.find((find) => find?.name === maxFind);
+      const maxFinded = results.find((find) => find?.name === maxFind || find?.detail?.name === maxFind);
       if (maxFinded?.name !== null) {
         setupEvolves.push(maxFinded.detail);
       }

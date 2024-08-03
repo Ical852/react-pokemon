@@ -19,7 +19,7 @@ export const myPokemonApis = {
     return response.data;
   },
   renamePokemon: async (payload) => {
-    const response = await axios.get(restBaseUrl + "pokemon/rename/" + payload.id, payload);
+    const response = await axios.post(restBaseUrl + "pokemon/rename/" + payload.id, payload);
     return response.data;
   },
 };

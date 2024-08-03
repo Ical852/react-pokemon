@@ -23,9 +23,10 @@ export const getAllMyPokemonsReset = () => {
   };
 };
 
-export const findPokemon = () => {
+export const findPokemon = (payload) => {
   return {
     type: CONST.FIND_POKEMON,
+    payload,
   };
 };
 export const findPokemonSuccess = (payload) => {
@@ -46,9 +47,10 @@ export const findPokemonReset = () => {
   };
 };
 
-export const catchPokemon = () => {
+export const catchPokemon = (payload) => {
   return {
     type: CONST.CATCH_POKEMON,
+    payload,
   };
 };
 export const catchPokemonSuccess = (payload) => {
@@ -69,10 +71,11 @@ export const catchPokemonReset = () => {
   };
 };
 
-export const releasePokemon = () => {
+export const releasePokemon = (payload) => {
   return {
     type: CONST.RELEASE_POKEMON,
-  };
+    payload,
+    };
 };
 export const releasePokemonSuccess = (payload) => {
   return {
@@ -92,10 +95,11 @@ export const releasePokemonReset = () => {
   };
 };
 
-export const renamePokemon = () => {
+export const renamePokemon = (payload) => {
   return {
     type: CONST.RENAME_POKEMON,
-  };
+    payload,
+    };
 };
 export const renamePokemonSuccess = (payload) => {
   return {

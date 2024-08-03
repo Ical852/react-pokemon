@@ -1,10 +1,10 @@
 import React from "react";
 import { getPokeColors, getPokeImg } from "../../../utils";
 import { Badge } from '../../atoms';
-import "./styles.css";
 
 const PokemonCard = (props) => {
   const { pokemon, onClick } = props;
+
   return (
     <div
       onClick={onClick}
@@ -14,7 +14,7 @@ const PokemonCard = (props) => {
       }}
     >
       <div>
-        <span className="text-base text-white capitalize">{pokemon.name}</span>
+        <span className="text-base text-white capitalize">{pokemon.nickname ?? pokemon.name}</span>
         <div className="flex items-start mt-1">
           <div className="flex flex-col items-start">
             {pokemon?.detail?.types?.map((typ) => {

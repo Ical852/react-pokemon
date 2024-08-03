@@ -40,7 +40,7 @@ export const useHome = () => {
   }, [pokemons]);
 
   const onClick = useCallback((pokemon) => {
-    return navigate('/detail');
+    return navigate('/detail', { state: pokemon });
   }, [navigate]);
 
   useEffect(() => {

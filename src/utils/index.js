@@ -52,13 +52,13 @@ export const setupEvolutions = (evolutions, results) => {
   const setupEvolves = [];
 
   let minFind = evolutions?.chain?.species?.name;
-  let midSet = evolutions?.chain?.evolvesTo;
+  let midSet = evolutions?.chain?.evolves_to;
   let midFind = null;
   let maxFind = null;
 
   if (midSet !== null && midSet?.length > 0) {
     midFind = midSet?.[0]?.species?.name;
-    var maxSet = midSet?.[0]?.evolvesTo;
+    var maxSet = midSet?.[0]?.evolves_to;
     if (maxSet !== null && maxSet?.length > 0) {
       maxFind = maxSet?.[0]?.species?.name;
     }
@@ -77,7 +77,7 @@ export const setupEvolutions = (evolutions, results) => {
     try {
       const midFinded = results.find((find) => find?.name === midFind);
       if (midFinded?.name !== null) {
-        setupEvolves.add(midFinded.detail);
+        setupEvolves.push(midFinded.detail);
       }
     } catch (e) {}
   }
@@ -86,7 +86,7 @@ export const setupEvolutions = (evolutions, results) => {
     try {
       const maxFinded = results.find((find) => find?.name === maxFind);
       if (maxFinded?.name !== null) {
-        setupEvolves.add(maxFinded.detail);
+        setupEvolves.push(maxFinded.detail);
       }
     } catch (e) {}
   }

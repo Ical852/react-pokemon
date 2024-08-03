@@ -6,7 +6,7 @@ const Badge = (props) => {
 
   return (
     <div 
-      className='px-3 rounded-full border border-white mb-1 text-white'
+      className='px-3 rounded-full border border-white mb-1 text-white inline-block fit-content'
       style={{ backgroundColor: getPokeColors(type.type.name) }}>
       {type.type.name}
     </div>
